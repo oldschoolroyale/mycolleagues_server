@@ -21,6 +21,5 @@ public interface RegistrationRepository extends JpaRepository<Register,Long> {
     @Modifying(clearAutomatically = true)
     @Query("UPDATE  Register r SET  r.is_online = :is_online WHERE r.username = :username")
     void updateStatus(@Param("username") String username, @Param("is_online") Boolean is_online);
-
-
+    //
 }
