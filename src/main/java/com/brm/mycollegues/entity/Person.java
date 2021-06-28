@@ -1,6 +1,9 @@
 package com.brm.mycollegues.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,7 +11,7 @@ import java.io.Serializable;
 
 @Entity
 @Data
-public class Register implements Serializable{
+public class Person implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,8 +22,11 @@ public class Register implements Serializable{
     private String name;
     private String avatar;
     private Boolean is_online;
+    private Long work_start;
+    private Long last_visit;
 
 
-
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "month_id", referencedColumnName = "id")
+    private Month month;
 }
